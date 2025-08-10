@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+package common;
+
+import "google/protobuf/empty.proto";
+
+message Success {
+}
+
+message Error
+{
+   int32  errorCode = 1;
+   string message   = 2;
+}
+
+message Result
+{
+   oneof status
+   {
+      Success success = 1;
+      Error   error   = 2;
+   }
+}
+
+message Request
+{
+   oneof status
+   {
+      google.protobuf.Empty typeOne = 1;
+      google.protobuf.Empty typeTwo = 2;
+   }
+}
+
+message Response
+{
+    Result result = 1;
+}

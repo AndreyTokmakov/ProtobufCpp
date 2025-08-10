@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package demo;
+
+import public "status.proto";
+import public "type.proto";
+import public "error.proto";
+
+message Request
+{
+    int32 id = 1;
+    string data = 2;
+    enums.Status status = 3;
+    enums.Type type = 4;
+    demo.Error error = 5;
+}

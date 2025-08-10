@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package demo;
+
+import public "address.proto";
+import public "date.proto";
+
+message Person {
+    string name = 1;
+    int32 id = 2;
+    string email = 3;
+    repeated string phones = 4;
+    date_time.Date birthday = 5;
+    addr.Address address = 6;
+}

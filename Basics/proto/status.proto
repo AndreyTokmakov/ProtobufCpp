@@ -1,0 +1,10 @@
+
+syntax = "proto3";
+
+package enums;
+
+enum Status
+{
+    Success = 0;
+    Failure = 1;
+}

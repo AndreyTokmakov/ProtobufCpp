@@ -1,0 +1,11 @@
+
+syntax = "proto3";
+
+package enums;
+
+enum Type
+{
+    Ping = 0;
+    Notification = 1;
+    Event = 2;
+}
