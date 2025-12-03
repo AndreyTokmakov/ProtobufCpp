@@ -4,5 +4,5 @@ package demo_service;
 
 message Message
 {
-    string payload = 2;
+    string payload  = 2;
 }

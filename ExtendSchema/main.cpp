@@ -32,10 +32,11 @@ namespace server
     using namespace demo_service;
 
     Message makeMessage(const std::string& text,
-                        [[maybe_unused]] uint32_t error = 0)
+                        [[maybe_unused]] int32_t error = 0)
     {
         Message message;
         message.set_payload(text);
+        // message.set_errorcode(error);
         return message;
     }
 
@@ -70,6 +71,7 @@ namespace client
     void processMessage(const server::Message& message)
     {
         std::cout << message.payload() << std::endl;
+        // std::cout << message.errorcode() << std::endl;
     }
 
     void processMessageAsStr(const std::string& messageData)
@@ -77,6 +79,7 @@ namespace client
         Message msg;
         msg.ParseFromString(messageData);
         std::cout << msg.payload() << std::endl;
+        // std::cout << msg.errorcode() << std::endl;
     }
 
     void processMessageFromFile()
@@ -87,6 +90,7 @@ namespace client
         Message msg;
         msg.ParseFromString(messageData);
         std::cout << msg.payload() << std::endl;
+        // std::cout << msg.errorcode() << std::endl;
     }
 }
 
@@ -95,17 +99,18 @@ int main([[maybe_unused]] int argc,
 {
     const std::vector<std::string_view> args(argv + 1, argv + argc);
 
+
     /*
     {
-        const auto message = server::makeMessage("Hello World!");
+        const auto message = server::makeMessage("Hello World!", 11);
         client::processMessage(message);
     }
     {
-        const std::string message = server::makeMessageAsStr("Hello World!");
+        const std::string message = server::makeMessageAsStr("Hello World!", 22);
         client::processMessageAsStr(message);
     }*/
 
-    server::storeMessageToFile("Hello World!");
+    // server::storeMessageToFile("Hello World -3", 333);
     client::processMessageFromFile();
 
 
