@@ -19,12 +19,23 @@ namespace Request
 {
     using demo::Request;
 
+
+    template<typename ProtoType>
+    concept HasErrWithStringSetter = requires(ProtoType& protoObj, const std::string& str) {
+        { protoObj.mutable_error()->set_message(str) } -> std::same_as<void>;
+    };
+
+    void setErrorMessage(HasErrWithStringSetter auto & request, const std::string& message)
+    {
+        request.mutable_error()->set_message(message);
+    }
+
     Request makeRequest()
     {
         Request request;
 
+        setErrorMessage(request, "Oppss");
         // request.mutable_error()->set_code(123);
-        request.mutable_error()->set_message("Oppss");
 
         return request;
     }

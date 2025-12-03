@@ -17,6 +17,7 @@ endif()
 add_compile_options(-c -Wall -Wextra -O3 -std=c++26)
 
 add_subdirectory(Basics)
+add_subdirectory(ExtendSchema)
 add_subdirectory(Manual)
 add_subdirectory(SimpleDemo)
 add_subdirectory(Utilities)
